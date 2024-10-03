@@ -95,3 +95,8 @@
     flex-direction: column; /* Column direction */
     gap: 12px; /* Gap between flex items (3 * 4px = 12px) */
 }
+.form-container-12{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

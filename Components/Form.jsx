@@ -39,7 +39,7 @@ const Form = () => {
       <h1 className="text-sm sm:text-lg font-medium">
         Please Fill the Following details to generate the Payment Link :
       </h1>
-      <div className="flex flex-col gap-10">
+      <div className="form-container-12">
         <Input
           type="text"
           label="USER_ID"
