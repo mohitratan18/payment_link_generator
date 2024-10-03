@@ -30,8 +30,9 @@ export default function ProductTable() {
   const [ProductID, setProductID] = useState("");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  const [selectedItem, setSelectedItem] = useState(null);
   const rowsPerPage = 10;
-  const { product } = useAppContext();
+  const { product, setproduct } = useAppContext();
   const pages = Math.ceil(data.length / rowsPerPage);
 
   const items = useMemo(() => {
@@ -52,13 +53,31 @@ export default function ProductTable() {
     });
     setData(temp);
   };
-  const handleselect =()=>{
-    set
-  }
+
+  const handlePrice = (item) => {
+    const data = {
+      name: item.Product_Name,
+      priceId: item.priceId,
+      productId: item.productId,
+      price: item.Amount,
+      Currency: item.Currency,
+      interval: item.Interval,
+    };
+    setproduct(data);
+    onClose();
+  };
+
+  const handleSelect = () => {
+    if (selectedItem) {
+      handlePrice(selectedItem);
+    }
+  };
+
   useEffect(() => {
     HandleData();
   }, []);
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
   return (
     <>
@@ -115,15 +134,18 @@ export default function ProductTable() {
                 </ModalHeader>
                 <div className="modal-container">
                   <ModalBody>
-                    <ProductList id={ProductID} onClose={onClose} />
+                    <ProductList
+                      id={ProductID}
+                      onSelectItem={(item) => setSelectedItem(item)}
+                    />
                   </ModalBody>
                 </div>
                 <ModalFooter>
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button color="danger" variant="light" onPress={onClose} onClick={handleselect}>
-                    select
+                  <Button color="primary" onPress={handleSelect}>
+                    Select
                   </Button>
                 </ModalFooter>
               </>
