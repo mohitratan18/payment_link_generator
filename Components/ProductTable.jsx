@@ -158,7 +158,7 @@ export default function ProductTable() {
                 </Button>
                 <Button 
                   color="primary" 
-                  onPress={handleSelect}
+                  onClick={handleSelect}
                   isDisabled={!selectedItem}
                 >
                   Select
