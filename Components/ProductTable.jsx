@@ -30,12 +30,9 @@ export default function ProductTable() {
   const [ProductID, setProductID] = useState("");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  const [selectedItem, setSelectedItem] = useState(null);
   const rowsPerPage = 10;
-  const { product, setproduct } = useAppContext();
+  const { product } = useAppContext();
   const pages = Math.ceil(data.length / rowsPerPage);
-
-  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
   const items = useMemo(() => {
     const start = (page - 1) * rowsPerPage;
@@ -55,33 +52,10 @@ export default function ProductTable() {
     });
     setData(temp);
   };
-
-  const handlePrice = (item) => {
-    const data = {
-      name: item.Product_Name,
-      priceId: item.priceId,
-      productId: item.productId,
-      price: item.Amount,
-      Currency: item.Currency,
-      interval: item.Interval,
-    };
-    setproduct(data);
-  };
-
-  const handleSelect = () => {
-    if (selectedItem) {
-      handlePrice(selectedItem);
-      onClose();
-    }
-  };
-
-  const handleItemSelect = (item) => {
-    setSelectedItem(item);
-  };
-
   useEffect(() => {
     HandleData();
   }, []);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <>
@@ -115,7 +89,6 @@ export default function ProductTable() {
               className="cursor-pointer"
               onClick={() => {
                 setProductID(item.productId);
-                setSelectedItem(null);
                 onOpen();
               }}
             >
@@ -129,45 +102,33 @@ export default function ProductTable() {
         </TableBody>
       </Table>
 
-      <Modal 
-        isOpen={isOpen} 
-        onOpenChange={(open) => {
-          if (!open) {
-            setSelectedItem(null);
-          }
-          onOpenChange(open);
-        }}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">
-                Packages available for the following product - 
-              </ModalHeader>
-              <div className="modal-container">
-                <ModalBody>
-                  <ProductList
-                    id={ProductID}
-                    onSelectItem={handleItemSelect}
-                  />
-                </ModalBody>
-              </div>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                <Button 
-                  color="primary" 
-                  onClick={handleSelect}
-                  isDisabled={!selectedItem}
-                >
-                  Select
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+      <>
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+          <ModalContent>
+            {(onClose) => (
+              <>
+                <ModalHeader className="flex flex-col gap-1">
+                  Packages available for the following product - 
+                </ModalHeader>
+                <div className="modal-container">
+                  <ModalBody>
+                    <ProductList id={ProductID} onClose={onClose} />
+                  </ModalBody>
+                </div>
+                <ModalFooter>
+                  <Button color="danger" variant="light" onPress={onClose}>
+                    Close
+                  </Button>
+                  <Button color="danger" variant="light" onPress={onClose}>
+                    select
+                  </Button>
+                </ModalFooter>
+              </>
+            )}
+          </ModalContent>
+        </Modal>
+      </>
     </>
   );
 }
+ 
