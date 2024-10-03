@@ -110,7 +110,7 @@ export default function ProductTable() {
                 <ModalHeader className="flex flex-col gap-1">
                   Packages available for the following product - 
                 </ModalHeader>
-                <div className="max-h-[80vh] overflow-scroll">
+                <div className="modal-container">
                   <ModalBody>
                     <ProductList id={ProductID} />
                   </ModalBody>

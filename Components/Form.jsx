@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import "../app/globals.css"
 import ProductTable from "./ProductTable";
 import { Input } from "@nextui-org/react";
 import { useAppContext } from "@/app/Contexts/appContext";
@@ -34,7 +35,7 @@ const Form = () => {
     setproduct(null);
   };
   return (
-    <div className="max-w-[390px] sm:max-w-[640px] sm:min-h-[720px] bg-white sm:min-w-[640px]  flex flex-col p-4 sm:p-5 gap-8  drop-shadow-xl">
+    <div className="form-container">
       <h1 className="text-sm sm:text-lg font-medium">
         Please Fill the Following details to generate the Payment Link :
       </h1>
@@ -49,7 +50,7 @@ const Form = () => {
         />
 
         {product ? (
-          <div className="flex flex-col gap-2">
+          <div className="form-container-1">
             <Table
               color={selectedColor}
               selectionMode="single"
@@ -72,7 +73,7 @@ const Form = () => {
               </TableBody>
             </Table>
             <button
-              className="p-4 bg-red-700 text-white rounded-full max-w-[180px] hover:bg-red-500 transition-all"
+              className="form-button"
               onClick={() => {
                 handlechange();
               }}
@@ -81,20 +82,21 @@ const Form = () => {
             </button>
           </div>
         ) : (
-          <div className="flex flex-col gap-3">
+          <div className="form-container-2">
             <h1 className="text-lg font-medium">
               Please select the product below
             </h1>
             <ProductTable />
           </div>
         )}
-        <div className="flex flex-row justify-between items-center m-auto gap-2">
+
+        <div className="form-container-3">
           <h1 className=" text-md sm:text-lg font-medium">
             Please select your subscription type
           </h1>
           <select
             defaultValue={"select your subscription type"}
-            className="border border-solid border-gray-400  p-2 sm:p-4"
+            className="form-select"
             onChange={(e)=>{setpaymenttype(e.target.value)}}
           >
             <option value={"subscription"}>Subscription(auto pay)</option>
@@ -102,7 +104,7 @@ const Form = () => {
           </select>
         </div>
         <button
-          className="bg-blue-600 p-4 text-white text-lg rounded-full hover:bg-blue-400"
+          className="form-button-2"
           onClick={handlesubmit}
         >
           {btntext}

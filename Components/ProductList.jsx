@@ -26,16 +26,16 @@ export default function ProductList({ id }) {
     const data = {
       name: item.Product_Name,
       priceId: item.priceId,
-      productId:item.productId,
+      productId: item.productId,
       price: item.Amount,
-      Currency : item.Currency,
-      interval : item.Interval
-    }
+      Currency: item.Currency,
+      interval: item.Interval,
+    };
     setproduct(data);
     // console.log(product);
   };
   return (
-    <div className="flex flex-col gap-3">
+    <div className="list-container">
       <Table
         color={selectedColor}
         selectionMode="single"
@@ -50,10 +50,7 @@ export default function ProductList({ id }) {
         <TableBody>
           {Data.filter((data) => data.productId === id).map((item, index) => {
             return (
-              <TableRow
-                key={index + 1}
-                onClick={() => handlePrice(item)}
-              >
+              <TableRow key={index + 1} onClick={() => handlePrice(item)}>
                 <TableCell>{item.Amount}</TableCell>
                 <TableCell>{item.Currency}</TableCell>
                 <TableCell>{item.Interval}</TableCell>
