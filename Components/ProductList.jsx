@@ -18,7 +18,7 @@ const colors = [
   "danger",
 ];
 
-export default function ProductList({ id, onClose }) {
+export default function ProductList({ id, onClose ,tempproduct,settempproduct}) {
   const [selectedColor, setSelectedColor] = useState("primary");
   const { product, setproduct } = useAppContext();
   const handlePrice = (item) => {
@@ -30,7 +30,7 @@ export default function ProductList({ id, onClose }) {
       Currency: item.Currency,
       interval: item.Interval,
     };
-    setproduct(data);
+    settempproduct(data);
   };
 
   const handleRowClick = useCallback((item) => {
@@ -56,7 +56,7 @@ export default function ProductList({ id, onClose }) {
                 key={index}
                 onClick={() => handleRowClick(item)}
                 onTouchStart={() => handleRowClick(item)}
-                className="cursor-pointe"
+                className="cursor-pointer"
               >
                 <TableCell className="cursor-pointer">{item.Amount}</TableCell>
                 <TableCell className="cursor-pointer">

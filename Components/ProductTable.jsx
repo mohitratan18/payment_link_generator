@@ -27,13 +27,13 @@ import ProductList from "./ProductList";
 import { useAppContext } from "@/app/Contexts/appContext";
 
 export default function ProductTable() {
+  const [tempproduct, settempproduct] = useState(null);
   const [ProductID, setProductID] = useState("");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const rowsPerPage = 10;
-  const { product } = useAppContext();
   const pages = Math.ceil(data.length / rowsPerPage);
-
+  const { product, setproduct } = useAppContext();
   const items = useMemo(() => {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
@@ -108,18 +108,32 @@ export default function ProductTable() {
             {(onClose) => (
               <>
                 <ModalHeader className="flex flex-col gap-1">
-                  Packages available for the following product - 
+                  Packages available for the following product -
                 </ModalHeader>
                 <div className="modal-container">
                   <ModalBody>
-                    <ProductList id={ProductID} onClose={onClose} />
+                    <ProductList
+                      id={ProductID}
+                      onClose={onClose}
+                      tempproduct={tempproduct}
+                      settempproduct={settempproduct}
+                    />
                   </ModalBody>
                 </div>
                 <ModalFooter>
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button color="danger" variant="light" onPress={onClose}>
+                  <Button
+                    color="danger"
+                    variant="light"
+                    onPress={() => {
+                      if (tempproduct) {
+                        setproduct(tempproduct);
+                        onClose();
+                      }
+                    }}
+                  >
                     select
                   </Button>
                 </ModalFooter>
@@ -131,4 +145,3 @@ export default function ProductTable() {
     </>
   );
 }
- 
