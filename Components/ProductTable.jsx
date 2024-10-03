@@ -130,7 +130,7 @@ export default function ProductTable() {
             {(onClose) => (
               <>
                 <ModalHeader className="flex flex-col gap-1">
-                  Packages available for the following product - 
+                  Packages available for the following product -
                 </ModalHeader>
                 <div className="modal-container">
                   <ModalBody>
@@ -144,7 +144,13 @@ export default function ProductTable() {
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button color="primary" onPress={handleSelect}>
+                  <Button
+                    color="primary"
+                    onPress={() => {
+                      handleSelect();
+                      onClose();
+                    }}
+                  >
                     Select
                   </Button>
                 </ModalFooter>
