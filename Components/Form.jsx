@@ -32,6 +32,7 @@ const Form = () => {
     }
   };
   const handlechange = () => {
+    setbtntext("Click To Copy Payment Link");
     setproduct(null);
   };
   return (
