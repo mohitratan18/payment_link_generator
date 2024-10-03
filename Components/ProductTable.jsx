@@ -52,6 +52,9 @@ export default function ProductTable() {
     });
     setData(temp);
   };
+  const handleselect =()=>{
+    set
+  }
   useEffect(() => {
     HandleData();
   }, []);
@@ -112,12 +115,15 @@ export default function ProductTable() {
                 </ModalHeader>
                 <div className="modal-container">
                   <ModalBody>
-                    <ProductList id={ProductID} />
+                    <ProductList id={ProductID} onClose={onClose} />
                   </ModalBody>
                 </div>
                 <ModalFooter>
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
+                  </Button>
+                  <Button color="danger" variant="light" onPress={onClose} onClick={handleselect}>
+                    select
                   </Button>
                 </ModalFooter>
               </>

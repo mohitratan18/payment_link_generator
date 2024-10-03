@@ -18,7 +18,7 @@ const colors = [
   "danger",
 ];
 
-export default function ProductList({ id }) {
+export default function ProductList({ id,onClose }) {
   const [selectedColor, setSelectedColor] = useState("primary");
   // const [product, setproduct] = useState("");
   const { product, setproduct } = useAppContext();
@@ -32,6 +32,7 @@ export default function ProductList({ id }) {
       interval: item.Interval,
     };
     setproduct(data);
+    onClose();
     // console.log(product);
   };
   return (
