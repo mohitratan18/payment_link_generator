@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import "../app/globals.css"
+import "../app/globals.css";
 import ProductTable from "./ProductTable";
 import { Input } from "@nextui-org/react";
 import { useAppContext } from "@/app/Contexts/appContext";
@@ -11,24 +11,21 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
+
 const Form = () => {
   const [btntext, setbtntext] = useState("Click To Copy Payment Link");
   const [selectedColor, setSelectedColor] = useState("primary");
   const [userID, setuserID] = useState(null);
   const { product, setproduct } = useAppContext();
-  const [paymenttype,setpaymenttype] = useState('subscription');
-  const handlesubmit = () => {
-    if (!userID || !product ||!paymenttype) {
+  const [paymenttype, setpaymenttype] = useState(null);
+  const handlesubmit = async () => {
+    if (!userID || !product || !paymenttype) {
       alert("Please  fill all the fields");
     } else {
       navigator.clipboard.writeText(
         `https://us-central1-tlloanapp-d0571.cloudfunctions.net/stripePayment/purchase/${userID}/${product.priceId}?mode=${paymenttype}`
       );
       setbtntext("Link Copied");
-      // alert("Link Copied Successfully");
-      // setTimeout(() => {
-      //   setbtntext("Click To Copy Payment Link");
-      // }, 2000);
     }
   };
   const handlechange = () => {
@@ -37,18 +34,23 @@ const Form = () => {
   };
   return (
     <div className="form-container">
-      <h1 className="text-sm sm:text-lg font-medium">
-        Please Fill the Following details to generate the Payment Link :
+      <h1 className="text-lg sm:text-2xl font-bold text-center">
+        Create Payment Link
       </h1>
       <div className="form-container-12">
-        <Input
-          type="text"
-          label="USER_ID"
-          placeholder="Enter your UserId"
-          onChange={(e) => {
-            setuserID(e.target.value);
-          }}
-        />
+        <div className="flex flex-col gap-2">
+          <label htmlFor="userid" className="text-lg font-medium">
+            USERID
+          </label>
+          <Input
+            type="text"
+            placeholder="Enter your UserId"
+            onChange={(e) => {
+              setuserID(e.target.value);
+            }}
+            name="userid"
+          />
+        </div>
 
         {product ? (
           <div className="form-container-1">
@@ -96,18 +98,22 @@ const Form = () => {
             Please select your subscription type
           </h1>
           <select
-            defaultValue={"select your subscription type"}
             className="form-select"
-            onChange={(e)=>{setpaymenttype(e.target.value)}}
+            onChange={(e) => {
+              setpaymenttype(e.target.value);
+              setbtntext("Click To Copy Payment Link");
+            }}
           >
-            <option value={"subscription"}>Subscription(auto pay)</option>
+            <option value="" disabled selected>
+              Select an option
+            </option>
+            {product?.interval && (
+              <option value={"subscription"}>Subscription(auto pay)</option>
+            )}
             <option value={"payment"}>Single Time</option>
           </select>
         </div>
-        <button
-          className="form-button-2"
-          onClick={handlesubmit}
-        >
+        <button className="form-button-2" onClick={handlesubmit}>
           {btntext}
         </button>
       </div>
