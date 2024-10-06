@@ -31,7 +31,7 @@ export default function ProductTable() {
   const [ProductID, setProductID] = useState("");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  const rowsPerPage = 10;
+  const rowsPerPage = 8;
   const pages = Math.ceil(data.length / rowsPerPage);
   const { product, setproduct } = useAppContext();
   const items = useMemo(() => {

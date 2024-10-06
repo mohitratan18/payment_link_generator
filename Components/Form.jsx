@@ -34,7 +34,7 @@ const Form = () => {
   };
   return (
     <div className="form-container">
-      <h1 className="text-lg sm:text-2xl font-bold text-center">
+      <h1 className="text-lg sm:text-3xl font-bold text-center m-1" >
         Create Payment Link
       </h1>
       <div className="form-container-12">
@@ -57,7 +57,7 @@ const Form = () => {
             <Table
               color={selectedColor}
               selectionMode="single"
-              defaultSelectedKeys={["2"]}
+              defaultSelectedKeys={["1"]}
               aria-label="Example static collection table"
             >
               <TableHeader>
@@ -67,7 +67,7 @@ const Form = () => {
                 <TableColumn>Interval</TableColumn>
               </TableHeader>
               <TableBody>
-                <TableRow key={1}>
+                <TableRow key={'1'}>
                   <TableCell>{product.name}</TableCell>
                   <TableCell>{product.price}</TableCell>
                   <TableCell>{product.Currency}</TableCell>
@@ -86,7 +86,7 @@ const Form = () => {
           </div>
         ) : (
           <div className="form-container-2">
-            <h1 className="text-lg font-medium">
+            <h1 className="text-lg sm:text-xl font-medium">
               Please select the product below
             </h1>
             <ProductTable />
@@ -94,7 +94,7 @@ const Form = () => {
         )}
 
         <div className="form-container-3">
-          <h1 className=" text-md sm:text-lg font-medium">
+          <h1 className=" text-md sm:text-xl font-medium">
             Please select your subscription type
           </h1>
           <select
