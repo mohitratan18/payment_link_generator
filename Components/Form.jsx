@@ -34,7 +34,7 @@ const Form = () => {
   };
   return (
     <div className="form-container">
-      <h1 className="text-lg sm:text-3xl font-bold text-center m-1" >
+      <h1 className="text-3xl font-bold text-center m-1" >
         Create Payment Link
       </h1>
       <div className="form-container-12">
