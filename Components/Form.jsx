@@ -81,13 +81,13 @@ const Form = () => {
                 handlechange();
               }}
             >
-              change product
+              Change Product
             </button>
           </div>
         ) : (
           <div className="form-container-2">
             <h1 className="text-lg sm:text-xl font-medium">
-              Please select the product below
+              Please select The Product Below
             </h1>
             <ProductTable />
           </div>
@@ -95,7 +95,7 @@ const Form = () => {
 
         <div className="form-container-3">
           <h1 className=" text-md sm:text-xl font-medium">
-            Please select your subscription type
+            Please Select Your Subscription Type
           </h1>
           <select
             className="form-select"

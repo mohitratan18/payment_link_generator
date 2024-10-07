@@ -8,98 +8,96 @@
 }
 
 .form-container {
-  max-width: 390px; /* Default max width */
-  /* background-color: white; */
+  max-width: 390px;
   background-color: #97aec7;
-  display: flex; /* Flexbox layout */
-  flex-direction: column; /* Column direction */
+  display: flex;
+  flex-direction: column;
   padding: 24px;
   gap: 32px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 24px;
-  @media (min-width: 640px) {
+@media (min-width: 640px) {
     max-width: 640px;
     min-height: 720px;
     min-width: 640px;
     padding: 20px;
   }
-
 }
+
 .form-container-1 {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   padding: 12px;
 }
 
 .form-button {
-  padding: 16px; /* Padding */
-  background-color: #c53030; /* Red 700 */
-  color: white; /* Text color */
-  border-radius: 9999px; /* Full rounded */
-  max-width: 180px; /* Maximum width */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transition for hover effect */
+  padding: 16px;
+  background-color: #c53030;
+  color: white;
+  border-radius: 9999px;
+  max-width: 180px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover effect */
 .form-button:hover {
-  background-color: #f56565; /* Red 500 */
+  background-color: #f56565;
 }
 
 .form-container-2 {
-  display: flex; /* Flexbox layout */
-  flex-direction: column; /* Column direction */
-  gap: 12px; /* Gap between flex items (3 * 4px = 12px) */
-  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px;
 }
 
 .form-container-3 {
-  display: flex; /* Flexbox layout */
-  flex-direction: row; /* Row direction */
-  justify-content: space-between; /* Distribute items evenly */
-  align-items: center; /* Center items vertically */
-  margin: auto; /* Center the container horizontally */
-  gap: 8px; /* Gap between flex items (2 * 4px = 8px) */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  gap: 8px;
 }
 
 .form-select {
-  border: 1px solid #cbd5e1; /* Border color (gray-400) */
-  padding: 8px; /* Padding (2 * 4px = 8px) */
-
-  /* Media query for small screens */
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  /* padding: 4px; */
+  outline: none;
 }
 
 @media (min-width: 640px) {
   .form-select {
-    padding: 16px; /* Padding for small screens (4 * 4px = 16px) */
+    padding: 16px;
   }
 }
 
 .form-button-2 {
-    background-color: #2563eb; /* Blue 600 */
-    padding: 16px; /* Padding (4 * 4px = 16px) */
-    color: white; /* Text color */
-    font-size: 1.125rem; /* Text size (lg) */
-    border-radius: 9999px; /* Full rounded */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    background-color: #2563eb;
+    padding: 16px;
+    color: white;
+    font-size: 1.125rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease;
 }
 
-/* Hover effect */
 .form-button-2:hover {
-    background-color: #60a5fa; /* Blue 400 */
+    background-color: #60a5fa;
 }
 
 .modal-container {
-    max-height: 80vh; /* Maximum height of 80% of the viewport height */
-    overflow-y: scroll; /* Enable vertical scrolling if content exceeds the max height */
+    max-height: 80vh;
+    overflow-y: scroll;
 }
 
 .list-container {
-    display: flex; /* Flexbox layout */
-    flex-direction: column; /* Column direction */
-    gap: 12px; /* Gap between flex items (3 * 4px = 12px) */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
-.form-container-12{
+
+.form-container-12 {
   display: flex;
   flex-direction: column;
   gap: 2rem;
