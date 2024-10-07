@@ -14,11 +14,12 @@
   flex-direction: column;
   padding: 24px;
   gap: 32px;
+  height: 100%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 24px;
 @media (min-width: 640px) {
     max-width: 640px;
-    min-height: 720px;
+    max-height: 100vh;
     min-width: 640px;
     padding: 20px;
   }
@@ -76,9 +77,11 @@
 .form-button-2 {
     background-color: #2563eb;
     padding: 16px;
+    /* width: 160px; */
     color: white;
     font-size: 1.125rem;
     border-radius: 9999px;
+
     transition: background-color 0.3s ease;
 }
 
